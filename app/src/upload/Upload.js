@@ -160,9 +160,7 @@ onFilesAdded(files) {
                 })}
               </div>
             </div>
-            <div className="Actions">{this.renderActions()}
-    
-            </div>
+            <div className="Actions">{this.renderActions()}</div>
           </div>
         );
       }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Display extends Component{
+class Display_Two extends Component{
 
     state = {
         first_name: 'First Name Placeholder',
@@ -22,4 +22,4 @@ class Display extends Component{
 
 }
 
-export default Display;
+export default Display_Two;

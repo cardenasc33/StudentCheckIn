@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 // import { connect } from 'react-redux'
 import ReactFileReader from 'react-file-reader';
 import { ENETUNREACH } from 'constants';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux'; //connects components to redux store
+import { fetchPosts } from '../actions/postActions';
+
 
 
 function insertJSON(data){
@@ -24,7 +28,20 @@ function insertJSON(data){
   })
 }
 
-export default class FileUploader extends Component {
+class FileUploader extends Component {
+  
+  /*
+  componentWillMount() {
+    this.props.fetchPosts();
+  }
+
+  componentWillReceiveProps(nextProps) {
+      if(nextProps.newPost) {
+        this.props.posts.unshift(nextProps.newPost); //add to beginning
+      }
+  }
+  */
+  
 
   state = {
     fileUpload_status: 'false',
@@ -145,18 +162,39 @@ export default class FileUploader extends Component {
   
   } //end of handleFiles
 
+  renderActions() {
+    if (this.state.fileUpload_status == 'true'){
+      return "File successfully uploaded";
+    }
+  }
   render() {
     return (
       <div>
         <ReactFileReader handleFiles={this.handleFiles} fileTypes={'.csv'}>
           <button className='btn'>Upload</button>
         </ReactFileReader>
-        {this.state.isAvailable &&
+
+        <div className="Actions">{this.renderActions()}</div>
+        
+        {/*{this.state.isAvailable &&
 
           <pre>{this.state.data}</pre>
 
-        }
+        }*/}
       </div>
     );
   }
 }
+
+FileUploader.propTypes = {
+  fetchPosts: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired,
+  newPost: PropTypes.object
+}
+
+const mapStateToProps = state => ({
+  posts: state.posts.items,
+  newPost: state.posts.item
+})
+
+export default connect(mapStateToProps, {fetchPosts}) (FileUploader);
