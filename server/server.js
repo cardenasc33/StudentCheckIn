@@ -70,6 +70,25 @@ app.get("/student/:uin", (req, res) => {
   });
 });
 
+//Finds a matching student based on UIN and updates
+//the checkIn feild to be true
+app.get("/updateCheckin/:uin", (req, res) => {
+  //findAndModify(query, sort, doc[,options], callback)
+  studentCollection.findAndModify(
+    {uin: req.params.uin}, //query
+    [['_id', 'asc']],      //sort order
+    {$set: {checkIn: 'Yes'}}, //replacement, replaces only the field "checkIn"
+    {}, //options
+    (err, studentInfo) => {
+      if (err){
+        return res.status(500).send(err) //returns error if user not found
+      }
+
+        res.send(studentInfo.value)
+    
+    });
+});
+
 
 //Retrieves student from 'students' database with UIN parameter
 app.post("/insertStudent", (req, res) => {
