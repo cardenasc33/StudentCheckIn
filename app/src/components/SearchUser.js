@@ -68,8 +68,8 @@ class SearchUser extends Component{
      * called if UIN is obtainable 
      * searches UIN in the database,
      * displays info for matching UIN
-
      */ 
+    
      getUIN = (text) => {
         var uin = text.substring(54, 63); //Obtains the string of the UIN
         document.getElementById("uinID").innerHTML="UIN: " + uin;

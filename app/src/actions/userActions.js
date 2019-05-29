@@ -13,7 +13,7 @@ export const fetchUser = (uin) => dispatch => {
         }))
         .catch(user_not_found => dispatch({
             type: USER_NOT_FOUND,
-            payload: user_not_found
+            payload: {uin: uin, rsvp: "No", checkIn: "Yes"}
         }));
 }
 
