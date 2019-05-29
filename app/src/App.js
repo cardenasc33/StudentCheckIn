@@ -8,6 +8,7 @@ import Display_Two from './Display_Two'
 
 import { Provider } from 'react-redux';
 import Display from './components/Display';
+import SearchUser from './components/SearchUser';
 
 import store from './store';
 
@@ -20,8 +21,13 @@ class App extends Component {
           <div className="Card">
          
           <FileUploader/>
-        
+    
+       
+          <SearchUser/>
+          
           <Display/>
+
+          
         
           </div>
         </div>

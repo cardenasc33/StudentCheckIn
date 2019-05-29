@@ -1,10 +1,11 @@
 import thunk from 'redux-thunk';
 import {createStore, applyMiddleware, compose} from 'redux'
-import rootReducer from './reducers'
+import rootReducer from './reducers' //includes all reducers
 
 const initialState = {};
 
 const middleware = [thunk];
+
 
 //Create store by passing root reducing function in createStore
 const store = createStore(rootReducer, initialState, 
