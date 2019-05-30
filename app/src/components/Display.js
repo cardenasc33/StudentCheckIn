@@ -11,7 +11,7 @@ class Display extends Component {
             this.props.fetchPosts();
         
     }
-
+    
     componentWillReceiveProps(nextProps) {
         if(nextProps.newPost) {
             this.props.students.unshift(nextProps.newPost); //add to beginning
