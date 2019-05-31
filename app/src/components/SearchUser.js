@@ -2,15 +2,55 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/userActions';
+import { createUser } from '../actions/userActions';
+import { exists } from 'fs';
 
 class SearchUser extends Component{
+    
+
+   
 
     componentWillMount() {
         //this.props.fetchUser();
     }
 
+    isEmpty = myObject => {
+        for(var key in myObject) {
+            if (myObject.hasOwnProperty(key)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    componentWillReceiveProps(nextProps){
+
+        
+        //console.log(nextProps.user);
+        //console.log(nextProps.user_not_found);
+        if(this.isEmpty(nextProps.user)){
+            console.log("User not in database: ");
+            console.log(nextProps.user_not_found);
+
+            //TODO reset state after inserting new object
+            //this.props.createUser(nextProps.user_not_found);
+        }else{
+            console.log("UIN match was found");
+            console.log(nextProps.user);
+        }
+        /*
+         if(nextProps.newPost) {
+            this.props.students.unshift(nextProps.newPost); //add to beginning
+        }
+        */
+    }
+
+   
+
     searchUser(uin){
+        
         this.props.fetchUser(uin)
+        //console.log(this.props.createUser(this.props.user));
     }
 
     enterPressed(e){
@@ -129,6 +169,7 @@ class SearchUser extends Component{
 
 SearchUser.propTypes = {
     fetchUser: PropTypes.func.isRequired,
+    createUser: PropTypes.func.isRequired,   
     user: PropTypes.object,
     user_not_found: PropTypes.object
 }
@@ -141,4 +182,4 @@ const mapStateToProps = state => (
 )
 
 
-export default connect(mapStateToProps, { fetchUser })(SearchUser);
+export default connect(mapStateToProps, { fetchUser , createUser})(SearchUser);

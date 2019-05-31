@@ -32,6 +32,24 @@ export const fetchUser = (uin) => dispatch => {
 
 //TODO Make CREATE_NEW_USER Type
 //Add new user to the display component
+
+export const createUser = (postData) => dispatch => {
+    
+    fetch('/insertStudent/', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        })
+        .then(res => res.json())
+        .then(post => dispatch({
+            type: USER_NOT_FOUND,
+            payload: post
+        }));
+        
+};
+/*
 export const createUser = (postData) => dispatch => {
     
     fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -48,7 +66,7 @@ export const createUser = (postData) => dispatch => {
         }));
         
 };
-
+*/
 
 
 
