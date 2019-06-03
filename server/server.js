@@ -92,13 +92,13 @@ app.get("/updateCheckin/:uin", (req, res) => {
 
 //Retrieves student from 'students' database with UIN parameter
 app.post("/insertStudent", (req, res) => {
-
+  console.log(req.body);
   studentCollection.insert(req.body, (err, studentInfo) => {
       
       if (err) {
         return res.status(500).send(err);
       }
-      
+       
       res.send(studentInfo.result);
   });
 });

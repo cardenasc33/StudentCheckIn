@@ -32,8 +32,8 @@ class SearchUser extends Component{
             console.log("User not in database: ");
             console.log(nextProps.user_not_found);
 
-            //TODO reset state after inserting new object
-            //this.props.createUser(nextProps.user_not_found);
+            //Creates a new user in the database with information provided
+            this.props.createUser(nextProps.user_not_found);
         }else{
             console.log("UIN match was found");
             console.log(nextProps.user);

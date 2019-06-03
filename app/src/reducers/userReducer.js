@@ -1,8 +1,9 @@
-import { USER_FOUND, USER_NOT_FOUND } from '../actions/types';
+import { USER_FOUND, USER_NOT_FOUND , NEW_USER} from '../actions/types';
 
 const initialState = {
     found: {}, //GET user that comes in from action
-    not_found: {}
+    not_found: {},
+    new_user: {}
 }
 
 export default function(state = initialState, action){
@@ -16,6 +17,11 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 not_found: action.payload
+            }
+        case NEW_USER:
+            return {
+                ...state,
+                new_user: undefined
             }
         default: 
             return state;

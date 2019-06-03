@@ -1,4 +1,4 @@
-import { USER_FOUND , USER_NOT_FOUND } from './types';
+import { USER_FOUND , USER_NOT_FOUND , NEW_USER } from './types';
 
 
 // fetch api that checks if user exits
@@ -34,8 +34,11 @@ export const fetchUser = (uin) => dispatch => {
 //Add new user to the display component
 
 export const createUser = (postData) => dispatch => {
-    
-    fetch('/insertStudent/', {
+    console.log(postData);
+    var stringedJSON = JSON.stringify(postData);
+    console.log(stringedJSON);
+
+    fetch('/insertStudent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -44,7 +47,7 @@ export const createUser = (postData) => dispatch => {
         })
         .then(res => res.json())
         .then(post => dispatch({
-            type: USER_NOT_FOUND,
+            type: NEW_USER,
             payload: post
         }));
         
