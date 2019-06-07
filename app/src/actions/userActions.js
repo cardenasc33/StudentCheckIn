@@ -2,8 +2,13 @@ import { USER_FOUND , USER_NOT_FOUND , NEW_USER } from './types';
 
 
 // fetch api that checks if user exits
+/*
+export const displayUsers = () => async dispatch => {
+    try    
+}
+*/
 
-export const fetchUser = (uin) => dispatch => {
+export const fetchUser = (uin) => async dispatch => {
     /*   
     fetch('/student/' + uin)
         .then(res => res.json())
@@ -33,7 +38,7 @@ export const fetchUser = (uin) => dispatch => {
 //TODO Make CREATE_NEW_USER Type
 //Add new user to the display component
 
-export const createUser = (postData) => dispatch => {
+export const createUser = (postData) => async dispatch => {
     console.log(postData);
     var stringedJSON = JSON.stringify(postData);
     console.log(stringedJSON);

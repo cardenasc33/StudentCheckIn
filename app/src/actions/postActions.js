@@ -1,6 +1,6 @@
 import { FETCH_POSTS, NEW_POST } from './types';
 
-export const fetchPosts = () => dispatch => {
+export const fetchPosts = () => async dispatch => {
         
         fetch('/students')
             .then(res => res.json())
