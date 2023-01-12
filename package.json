@@ -18,6 +18,6 @@
     "mongodb": "^3.2.5",
     "nodemon": "^1.19.0",
     "npm": "^6.9.0",
-    "react-csv-reader": "^1.2.2"
+    "react-csv-reader": "^3.5.2"
   }
 }
